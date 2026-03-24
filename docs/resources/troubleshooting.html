@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Troubleshooting Guide for Reasoning From Scratch">
+    <title>Troubleshooting Guide | Reasoning From Scratch</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/chapter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-brain"></i>
+                <span>Reasoning From Scratch</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html#chapters" class="nav-link">Chapters</a></li>
+                <li><a href="../index.html#resources" class="nav-link active">Resources</a></li>
+                <li><a href="../index.html#setup" class="nav-link">Setup</a></li>
+                <li><a href="https://github.com/rasbt/reasoning-from-scratch" target="_blank" class="nav-link">
+                    <i class="fab fa-github"></i> GitHub
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="chapter-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../index.html#resources">Resources</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Troubleshooting</span>
+            </div>
+            <div class="chapter-title">
+                <div class="chapter-number-large"><i class="fas fa-tools"></i></div>
+                <div>
+                    <h1>Troubleshooting Guide</h1>
+                    <p class="chapter-description">Solutions to common issues and problems</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="chapter-content">
+        <div class="container">
+            <div class="main-content">
+                <article>
+                    <div class="info-box">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>Need More Help?</strong>
+                            <p>If you don't find your issue here, check the <a href="https://github.com/rasbt/reasoning-from-scratch/blob/main/troubleshooting.md" target="_blank">full troubleshooting guide on GitHub</a> or ask in the <a href="https://livebook.manning.com/forum?product=raschka2&page=1" target="_blank">discussion forum</a>.</p>
+                        </div>
+                    </div>
+
+                    <h2>Common Issues</h2>
+
+                    <h3><i class="fas fa-exclamation-triangle"></i> Installation & Environment</h3>
+
+                    <div class="resource-item">
+                        <i class="fas fa-python"></i>
+                        <div>
+                            <h4>Python Version Issues</h4>
+                            <p><strong>Problem:</strong> Getting errors about Python version compatibility</p>
+                            <p><strong>Solution:</strong> Ensure you're using Python 3.10 or higher. Check your version with:</p>
+                            <pre><code>python --version</code></pre>
+                            <p>If you need to install a newer version, visit <a href="https://www.python.org/downloads/" target="_blank">python.org</a></p>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-box"></i>
+                        <div>
+                            <h4>Package Installation Failures</h4>
+                            <p><strong>Problem:</strong> pip install fails or packages don't install correctly</p>
+                            <p><strong>Solution:</strong> Try upgrading pip first:</p>
+                            <pre><code>pip install --upgrade pip
+pip install -r requirements.txt</code></pre>
+                            <p>If specific packages fail, try installing them individually or use conda instead.</p>
+                        </div>
+                    </div>
+
+                    <h3><i class="fas fa-server"></i> GPU & Hardware</h3>
+
+                    <div class="resource-item">
+                        <i class="fas fa-microchip"></i>
+                        <div>
+                            <h4>CUDA Not Detected</h4>
+                            <p><strong>Problem:</strong> PyTorch doesn't detect your GPU</p>
+                            <p><strong>Solution:</strong> Check if CUDA is available:</p>
+                            <pre><code>import torch
+print(torch.cuda.is_available())
+print(torch.version.cuda)</code></pre>
+                            <p>If False, reinstall PyTorch with CUDA support from <a href="https://pytorch.org/get-started/locally/" target="_blank">pytorch.org</a></p>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-memory"></i>
+                        <div>
+                            <h4>Out of Memory Errors</h4>
+                            <p><strong>Problem:</strong> Getting CUDA out of memory or similar errors</p>
+                            <p><strong>Solution:</strong> Try these approaches:</p>
+                            <ul>
+                                <li>Reduce batch size in training scripts</li>
+                                <li>Use gradient checkpointing</li>
+                                <li>Clear CUDA cache: <code>torch.cuda.empty_cache()</code></li>
+                                <li>Use CPU mode for smaller experiments</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3><i class="fas fa-laptop-code"></i> Jupyter Notebooks</h3>
+
+                    <div class="resource-item">
+                        <i class="fas fa-file-code"></i>
+                        <div>
+                            <h4>Kernel Crashes or Restarts</h4>
+                            <p><strong>Problem:</strong> Jupyter kernel keeps crashing</p>
+                            <p><strong>Solution:</strong></p>
+                            <ul>
+                                <li>Check if you're running out of memory</li>
+                                <li>Restart the kernel and clear all outputs</li>
+                                <li>Make sure all dependencies are correctly installed</li>
+                                <li>Try running in a fresh environment</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-sync"></i>
+                        <div>
+                            <h4>Notebook Not Loading</h4>
+                            <p><strong>Problem:</strong> Jupyter notebook files won't open</p>
+                            <p><strong>Solution:</strong> Ensure JupyterLab is installed:</p>
+                            <pre><code>pip install jupyterlab
+jupyter lab</code></pre>
+                            <p>Then navigate to the notebook in the file browser.</p>
+                        </div>
+                    </div>
+
+                    <h3><i class="fas fa-code"></i> Code & Training</h3>
+
+                    <div class="resource-item">
+                        <i class="fas fa-bug"></i>
+                        <div>
+                            <h4>Import Errors</h4>
+                            <p><strong>Problem:</strong> Can't import reasoning_from_scratch modules</p>
+                            <p><strong>Solution:</strong> Make sure you're running from the repository root or install the package:</p>
+                            <pre><code>pip install -e .</code></pre>
+                            <p>This installs the package in editable mode.</p>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Slow Training or Inference</h4>
+                            <p><strong>Problem:</strong> Code runs very slowly</p>
+                            <p><strong>Solution:</strong></p>
+                            <ul>
+                                <li>Ensure you're using GPU if available</li>
+                                <li>Use the optimized versions in bonus folders</li>
+                                <li>Enable torch.compile() for faster inference</li>
+                                <li>Check CPU usage - you might need more powerful hardware for some chapters</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3><i class="fas fa-chart-line"></i> Model & Evaluation</h3>
+
+                    <div class="resource-item">
+                        <i class="fas fa-download"></i>
+                        <div>
+                            <h4>Model Download Issues</h4>
+                            <p><strong>Problem:</strong> Can't download model weights</p>
+                            <p><strong>Solution:</strong></p>
+                            <ul>
+                                <li>Check your internet connection</li>
+                                <li>Make sure you have enough disk space</li>
+                                <li>Try downloading manually from HuggingFace</li>
+                                <li>Use the checkpoint download scripts in chapter bonus folders</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="resource-item">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <div>
+                            <h4>Unexpected Results</h4>
+                            <p><strong>Problem:</strong> Getting different results than shown in book</p>
+                            <p><strong>Solution:</strong></p>
+                            <ul>
+                                <li>Random seeds may cause slight variations</li>
+                                <li>Check your model configuration matches the book</li>
+                                <li>Verify you're using the correct dataset</li>
+                                <li>Compare with the official solution notebooks</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h2>Platform-Specific Issues</h2>
+
+                    <div class="bonus-grid">
+                        <div class="bonus-card">
+                            <i class="fab fa-windows"></i>
+                            <h3>Windows</h3>
+                            <p>For torch.compile() issues on Windows, see the <a href="https://github.com/rasbt/reasoning-from-scratch/tree/main/ch02/04_torch-compile-windows" target="_blank">special guide</a></p>
+                        </div>
+
+                        <div class="bonus-card">
+                            <i class="fab fa-apple"></i>
+                            <h3>macOS</h3>
+                            <p>For Apple Silicon (M1/M2/M3), use MPS backend. Check if available with <code>torch.backends.mps.is_available()</code></p>
+                        </div>
+
+                        <div class="bonus-card">
+                            <i class="fab fa-linux"></i>
+                            <h3>Linux</h3>
+                            <p>Most issues are CUDA-related. Ensure your CUDA drivers match your PyTorch version</p>
+                        </div>
+                    </div>
+
+                    <h2>Getting Help</h2>
+
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <h4>GitHub Issues</h4>
+                                <p>Report bugs or technical issues</p>
+                                <a href="https://github.com/rasbt/reasoning-from-scratch/issues" target="_blank">Open an Issue →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-item">
+                            <i class="fas fa-comments"></i>
+                            <div>
+                                <h4>Discussion Forum</h4>
+                                <p>Ask questions and get help from the community</p>
+                                <a href="https://livebook.manning.com/forum?product=raschka2&page=1" target="_blank">Join Discussion →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-item">
+                            <i class="fas fa-book"></i>
+                            <div>
+                                <h4>Full Troubleshooting Guide</h4>
+                                <p>Complete guide with more solutions</p>
+                                <a href="https://github.com/rasbt/reasoning-from-scratch/blob/main/troubleshooting.md" target="_blank">Read Full Guide →</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>Companion learning website for <em>Build A Reasoning Model (From Scratch)</em> by Sebastian Raschka.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="https://mng.bz/lZ5B" target="_blank">Manning Book Page</a></li>
+                        <li><a href="https://github.com/rasbt/reasoning-from-scratch" target="_blank">GitHub Repository</a></li>
+                        <li><a href="../index.html">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Sebastian Raschka. Licensed under Apache License 2.0.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

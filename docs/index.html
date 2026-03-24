@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Build A Reasoning Model (From Scratch) - Learn to build reasoning LLMs step by step">
+    <title>Build A Reasoning Model (From Scratch)</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-brain"></i>
+                <span>Reasoning From Scratch</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#chapters" class="nav-link">Chapters</a></li>
+                <li><a href="#resources" class="nav-link">Resources</a></li>
+                <li><a href="#setup" class="nav-link">Setup</a></li>
+                <li><a href="https://github.com/rasbt/reasoning-from-scratch" target="_blank" class="nav-link">
+                    <i class="fab fa-github"></i> GitHub
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Build A Reasoning Model<br><span class="highlight">(From Scratch)</span></h1>
+                    <p class="hero-subtitle">Learn how reasoning LLMs work by building one yourself, step by step in code</p>
+                    <p class="hero-description">
+                        This is the companion learning website for the book published by Manning.
+                        Master the techniques used in DeepSeek R1, GPT-5 Thinking, and other state-of-the-art reasoning models.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#chapters" class="btn btn-primary">Start Learning</a>
+                        <a href="https://mng.bz/lZ5B" target="_blank" class="btn btn-secondary">Get the Book</a>
+                        <a href="https://github.com/rasbt/reasoning-from-scratch" target="_blank" class="btn btn-outline">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                    <div class="badges">
+                        <img src="https://github.com/rasbt/reasoning-from-scratch/actions/workflows/tests-linux.yml/badge.svg" alt="Linux Tests">
+                        <img src="https://github.com/rasbt/reasoning-from-scratch/actions/workflows/tests-macos.yml/badge.svg" alt="macOS Tests">
+                        <img src="https://github.com/rasbt/reasoning-from-scratch/actions/workflows/tests-windows.yml/badge.svg" alt="Windows Tests">
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://sebastianraschka.com/images/reasoning-from-scratch-images/cover.webp" alt="Book Cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mental Model Section -->
+    <section class="mental-model">
+        <div class="container">
+            <h2>Learning Path & Techniques</h2>
+            <p class="section-subtitle">The mental model below summarizes the main techniques covered in this resource</p>
+            <div class="mental-model-image">
+                <img src="https://sebastianraschka.com/images/reasoning-from-scratch-images/mental-model.webp" alt="Mental Model">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Why Learn From This Resource?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Hands-On Code</h3>
+                    <p>19 interactive Jupyter notebooks with complete, runnable implementations</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>Progressive Learning</h3>
+                    <p>From basic text generation to advanced reinforcement learning techniques</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Consumer Hardware</h3>
+                    <p>Designed to run on standard laptops and consumer GPUs</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Educational Focus</h3>
+                    <p>Build understanding through practical implementation, not just theory</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Exercises & Solutions</h3>
+                    <p>Each chapter includes exercises with detailed solution notebooks</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Production Techniques</h3>
+                    <p>Learn optimization, batching, and efficiency improvements</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapters Section -->
+    <section id="chapters" class="chapters">
+        <div class="container">
+            <h2>Chapters & Content</h2>
+            <p class="section-subtitle">Follow a structured path from foundational concepts to advanced techniques</p>
+
+            <div class="chapter-category">
+                <h3><i class="fas fa-book"></i> Foundation (Chapters 1-3)</h3>
+                <div class="chapters-grid">
+                    <div class="chapter-card">
+                        <div class="chapter-number">01</div>
+                        <div class="chapter-content">
+                            <h4>Understanding Reasoning Models</h4>
+                            <p>Learn the fundamental concepts behind reasoning in LLMs</p>
+                            <div class="chapter-meta">
+                                <span class="badge">Theory</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chapter-card" onclick="window.location.href='chapters/chapter02.html'">
+                        <div class="chapter-number">02</div>
+                        <div class="chapter-content">
+                            <h4>Generating Text with a Pre-trained LLM</h4>
+                            <p>Start with text generation using a pre-trained base model</p>
+                            <div class="chapter-meta">
+                                <span class="badge badge-code">Code</span>
+                                <span class="badge badge-exercises">Exercises</span>
+                            </div>
+                            <a href="chapters/chapter02.html" class="chapter-link">View Chapter →</a>
+                        </div>
+                    </div>
+                    <div class="chapter-card" onclick="window.location.href='chapters/chapter03.html'">
+                        <div class="chapter-number">03</div>
+                        <div class="chapter-content">
+                            <h4>Evaluating Reasoning Models</h4>
+                            <p>Master evaluation techniques and benchmarks like MATH-500</p>
+                            <div class="chapter-meta">
+                                <span class="badge badge-code">Code</span>
+                                <span class="badge badge-exercises">Exercises</span>
+                            </div>
+                            <a href="chapters/chapter03.html" class="chapter-link">View Chapter →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-category">
+                <h3><i class="fas fa-chart-line"></i> Inference Optimization (Chapters 4-5)</h3>
+                <div class="chapters-grid">
+                    <div class="chapter-card" onclick="window.location.href='chapters/chapter04.html'">
+                        <div class="chapter-number">04</div>
+                        <div class="chapter-content">
+                            <h4>Improving Reasoning with Inference-Time Scaling</h4>
+                            <p>Learn CoT prompting and self-consistency techniques</p>
+                            <div class="chapter-meta">
+                                <span class="badge badge-code">Code</span>
+                                <span class="badge badge-exercises">Exercises</span>
+                            </div>
+                            <a href="chapters/chapter04.html" class="chapter-link">View Chapter →</a>
+                        </div>
+                    </div>
+                    <div class="chapter-card" onclick="window.location.href='chapters/chapter05.html'">
+                        <div class="chapter-number">05</div>
+                        <div class="chapter-content">
+                            <h4>Inference-Time Scaling via Self-Refinement</h4>
+                            <p>Implement Best-of-N and self-refinement strategies</p>
+                            <div class="chapter-meta">
+                                <span class="badge badge-code">Code</span>
+                                <span class="badge badge-exercises">Exercises</span>
+                            </div>
+                            <a href="chapters/chapter05.html" class="chapter-link">View Chapter →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-category">
+                <h3><i class="fas fa-cogs"></i> Advanced Training (Chapters 6-8)</h3>
+                <div class="chapters-grid">
+                    <div class="chapter-card" onclick="window.location.href='chapters/chapter06.html'">
+                        <div class="chapter-number">06</div>
+                        <div class="chapter-content">
+                            <h4>Training Reasoning Models with Reinforcement Learning</h4>
+                            <p>Build reasoning models using GRPO reinforcement learning</p>
+                            <div class="chapter-meta">
+                                <span class="badge badge-code">Code</span>
+                                <span class="badge badge-exercises">Exercises</span>
+                                <span class="badge badge-gpu">GPU Recommended</span>
+                            </div>
+                            <a href="chapters/chapter06.html" class="chapter-link">View Chapter →</a>
+                        </div>
+                    </div>
+                    <div class="chapter-card" onclick="window.location.href='chapters/chapter07.html'">
+                        <div class="chapter-number">07</div>
+                        <div class="chapter-content">
+                            <h4>Improving GRPO for Reinforcement Learning</h4>
+                            <p>Advanced GRPO variants including DeepSeek and OLMo3 styles</p>
+                            <div class="chapter-meta">
+                                <span class="badge badge-code">Code</span>
+                                <span class="badge badge-exercises">Exercises</span>
+                                <span class="badge badge-gpu">GPU Recommended</span>
+                            </div>
+                            <a href="chapters/chapter07.html" class="chapter-link">View Chapter →</a>
+                        </div>
+                    </div>
+                    <div class="chapter-card" onclick="window.location.href='chapters/chapter08.html'">
+                        <div class="chapter-number">08</div>
+                        <div class="chapter-content">
+                            <h4>Distilling Reasoning Models for Efficient Reasoning</h4>
+                            <p>Create efficient models through knowledge distillation</p>
+                            <div class="chapter-meta">
+                                <span class="badge badge-code">Code</span>
+                                <span class="badge badge-exercises">Exercises</span>
+                            </div>
+                            <a href="chapters/chapter08.html" class="chapter-link">View Chapter →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-category">
+                <h3><i class="fas fa-puzzle-piece"></i> Appendices</h3>
+                <div class="chapters-grid">
+                    <div class="chapter-card" onclick="window.location.href='chapters/appendixC.html'">
+                        <div class="chapter-number">C</div>
+                        <div class="chapter-content">
+                            <h4>Qwen3 LLM Source Code</h4>
+                            <p>Deep dive into the architecture of the base model</p>
+                            <div class="chapter-meta">
+                                <span class="badge badge-code">Code</span>
+                            </div>
+                            <a href="chapters/appendixC.html" class="chapter-link">View Appendix →</a>
+                        </div>
+                    </div>
+                    <div class="chapter-card" onclick="window.location.href='chapters/appendixD.html'">
+                        <div class="chapter-number">D</div>
+                        <div class="chapter-content">
+                            <h4>Using Larger LLMs</h4>
+                            <p>Work with larger models and configurations</p>
+                            <div class="chapter-meta">
+                                <span class="badge badge-code">Code</span>
+                            </div>
+                            <a href="chapters/appendixD.html" class="chapter-link">View Appendix →</a>
+                        </div>
+                    </div>
+                    <div class="chapter-card" onclick="window.location.href='chapters/appendixE.html'">
+                        <div class="chapter-number">E</div>
+                        <div class="chapter-content">
+                            <h4>Batching and Throughput-Oriented Execution</h4>
+                            <p>Optimize for production throughput</p>
+                            <div class="chapter-meta">
+                                <span class="badge badge-code">Code</span>
+                            </div>
+                            <a href="chapters/appendixE.html" class="chapter-link">View Appendix →</a>
+                        </div>
+                    </div>
+                    <div class="chapter-card" onclick="window.location.href='chapters/appendixF.html'">
+                        <div class="chapter-number">F</div>
+                        <div class="chapter-content">
+                            <h4>Common Approaches to LLM Evaluation</h4>
+                            <p>MMLU, leaderboards, and LLM-as-a-judge evaluation</p>
+                            <div class="chapter-meta">
+                                <span class="badge badge-code">Code</span>
+                            </div>
+                            <a href="chapters/appendixF.html" class="chapter-link">View Appendix →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="resources">
+        <div class="container">
+            <h2>Learning Resources</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Interactive Notebooks</h3>
+                    <p>19 Jupyter notebooks with complete implementations</p>
+                    <a href="https://github.com/rasbt/reasoning-from-scratch/tree/main" class="resource-link">Browse Notebooks →</a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <h3>Exercises & Solutions</h3>
+                    <p>Practice problems with detailed solution notebooks</p>
+                    <a href="#chapters" class="resource-link">View Exercises →</a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-download"></i>
+                    <h3>Model Checkpoints</h3>
+                    <p>Pre-trained checkpoints for chapters 6, 7, and 8</p>
+                    <a href="resources/checkpoints.html" class="resource-link">Download →</a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Troubleshooting Guide</h3>
+                    <p>Solutions to common problems and issues</p>
+                    <a href="resources/troubleshooting.html" class="resource-link">Get Help →</a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Discussion Forum</h3>
+                    <p>Ask questions and share ideas with the community</p>
+                    <a href="https://livebook.manning.com/forum?product=raschka2&page=1" target="_blank" class="resource-link">Join Discussion →</a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-star"></i>
+                    <h3>Bonus Materials</h3>
+                    <p>Advanced scripts, optimizations, and extra content</p>
+                    <a href="resources/bonus.html" class="resource-link">Explore →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Setup Section -->
+    <section id="setup" class="setup">
+        <div class="container">
+            <h2>Getting Started</h2>
+            <div class="setup-content">
+                <div class="setup-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Clone the Repository</h3>
+                        <pre><code class="language-bash">git clone --depth 1 https://github.com/rasbt/reasoning-from-scratch.git
+cd reasoning-from-scratch</code></pre>
+                    </div>
+                </div>
+                <div class="setup-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Install Dependencies</h3>
+                        <pre><code class="language-bash">pip install -r requirements.txt</code></pre>
+                        <p class="step-note">See <a href="resources/setup.html">detailed setup instructions</a> for Python and GPU configuration</p>
+                    </div>
+                </div>
+                <div class="setup-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Start Learning</h3>
+                        <pre><code class="language-bash">jupyter lab</code></pre>
+                        <p class="step-note">Navigate to ch02/01_main-chapter-code/ch02_main.ipynb to begin</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hardware-requirements">
+                <h3><i class="fas fa-microchip"></i> Hardware Requirements</h3>
+                <div class="hardware-grid">
+                    <div class="hardware-item">
+                        <i class="fas fa-laptop"></i>
+                        <h4>CPU Mode</h4>
+                        <p>Chapters 2-4 work well on CPU</p>
+                    </div>
+                    <div class="hardware-item">
+                        <i class="fas fa-server"></i>
+                        <h4>GPU Recommended</h4>
+                        <p>Chapters 5-8 benefit from GPU acceleration</p>
+                    </div>
+                    <div class="hardware-item">
+                        <i class="fas fa-memory"></i>
+                        <h4>Consumer Hardware</h4>
+                        <p>Designed for standard laptops and GPUs</p>
+                    </div>
+                    <div class="hardware-item">
+                        <i class="fas fa-check-circle"></i>
+                        <h4>Platform Support</h4>
+                        <p>Windows, macOS, Linux (CUDA, MPS, XPU)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>Companion learning website for <em>Build A Reasoning Model (From Scratch)</em> by Sebastian Raschka, published by Manning.</p>
+                    <p class="isbn">ISBN: 9781633434677</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="https://mng.bz/lZ5B" target="_blank">Manning Book Page</a></li>
+                        <li><a href="https://github.com/rasbt/reasoning-from-scratch" target="_blank">GitHub Repository</a></li>
+                        <li><a href="https://livebook.manning.com/forum?product=raschka2&page=1" target="_blank">Discussion Forum</a></li>
+                        <li><a href="resources/troubleshooting.html">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Citation</h4>
+                    <p>If you find this resource useful for your research:</p>
+                    <pre class="citation-code"><code>@book{build-llms-from-scratch-book,
+  author    = {Sebastian Raschka},
+  title     = {Build A Reasoning Model
+               (From Scratch)},
+  publisher = {Manning},
+  year      = {2025},
+  isbn      = {9781633434677}
+}</code></pre>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Sebastian Raschka. Licensed under Apache License 2.0.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

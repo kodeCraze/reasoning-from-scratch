@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chapter 2: Generating Text with a Pre-trained LLM">
+    <title>Chapter 2 | Reasoning From Scratch</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/chapter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-brain"></i>
+                <span>Reasoning From Scratch</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html#chapters" class="nav-link">Chapters</a></li>
+                <li><a href="../index.html#resources" class="nav-link">Resources</a></li>
+                <li><a href="../index.html#setup" class="nav-link">Setup</a></li>
+                <li><a href="https://github.com/rasbt/reasoning-from-scratch" target="_blank" class="nav-link">
+                    <i class="fab fa-github"></i> GitHub
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Chapter Header -->
+    <section class="chapter-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../index.html#chapters">Chapters</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Chapter 2</span>
+            </div>
+            <div class="chapter-title">
+                <div class="chapter-number-large">02</div>
+                <div>
+                    <h1>Generating Text with a Pre-trained LLM</h1>
+                    <p class="chapter-description">Start with text generation using a pre-trained base model and understand the fundamentals of LLM inference</p>
+                    <div class="chapter-badges">
+                        <span class="badge badge-code">Code</span>
+                        <span class="badge badge-exercises">Exercises</span>
+                        <span class="badge">Beginner Friendly</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter Navigation -->
+    <section class="chapter-nav">
+        <div class="container">
+            <div class="chapter-nav-grid">
+                <a href="#overview" class="chapter-nav-item active">
+                    <i class="fas fa-info-circle"></i>
+                    Overview
+                </a>
+                <a href="#notebooks" class="chapter-nav-item">
+                    <i class="fas fa-book-open"></i>
+                    Notebooks
+                </a>
+                <a href="#exercises" class="chapter-nav-item">
+                    <i class="fas fa-puzzle-piece"></i>
+                    Exercises
+                </a>
+                <a href="#bonus" class="chapter-nav-item">
+                    <i class="fas fa-star"></i>
+                    Bonus Materials
+                </a>
+                <a href="#resources" class="chapter-nav-item">
+                    <i class="fas fa-download"></i>
+                    Resources
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter Content -->
+    <section id="overview" class="chapter-content">
+        <div class="container">
+            <div class="content-layout">
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <div class="sidebar-section">
+                        <h3>In This Chapter</h3>
+                        <ul class="toc">
+                            <li><a href="#overview">Chapter Overview</a></li>
+                            <li><a href="#notebooks">Interactive Notebooks</a></li>
+                            <li><a href="#exercises">Exercises</a></li>
+                            <li><a href="#bonus">Bonus Materials</a></li>
+                            <li><a href="#resources">Additional Resources</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-section">
+                        <h3>Prerequisites</h3>
+                        <ul class="prereq-list">
+                            <li><i class="fas fa-check-circle"></i> Python 3.10+</li>
+                            <li><i class="fas fa-check-circle"></i> Basic understanding of neural networks</li>
+                            <li><i class="fas fa-check-circle"></i> PyTorch basics</li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-section">
+                        <h3>Quick Links</h3>
+                        <ul class="quick-links">
+                            <li><a href="https://github.com/rasbt/reasoning-from-scratch/tree/main/ch02/01_main-chapter-code" target="_blank">
+                                <i class="fab fa-github"></i> Chapter Code
+                            </a></li>
+                            <li><a href="#" onclick="alert('Open in Colab functionality would link to Google Colab notebook')">
+                                <i class="fab fa-google"></i> Open in Colab
+                            </a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="main-content">
+                    <article>
+                        <h2>Chapter Overview</h2>
+                        <p>
+                            In this chapter, you'll learn the fundamentals of text generation with large language models (LLMs).
+                            We'll work with a pre-trained Qwen3 model to understand how LLMs generate text token by token.
+                        </p>
+
+                        <div class="info-box">
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                <strong>Learning Objectives</strong>
+                                <ul>
+                                    <li>Understand the tokenization process and how text is converted to numerical representations</li>
+                                    <li>Learn about different decoding strategies (greedy, temperature sampling, top-k, top-p)</li>
+                                    <li>Implement text generation from scratch using PyTorch</li>
+                                    <li>Set up and configure your development environment</li>
+                                    <li>Work with pre-trained model weights and configurations</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h2 id="notebooks">Interactive Notebooks</h2>
+                        <p>
+                            This chapter includes comprehensive Jupyter notebooks that walk you through the implementation step by step.
+                        </p>
+
+                        <div class="notebook-grid">
+                            <div class="notebook-card">
+                                <div class="notebook-icon">
+                                    <i class="fas fa-file-code"></i>
+                                </div>
+                                <h3>Main Chapter Notebook</h3>
+                                <p>Complete walkthrough of text generation concepts and implementation</p>
+                                <div class="notebook-links">
+                                    <a href="https://github.com/rasbt/reasoning-from-scratch/blob/main/ch02/01_main-chapter-code/ch02_main.ipynb" target="_blank" class="btn btn-primary">
+                                        <i class="fab fa-github"></i> View on GitHub
+                                    </a>
+                                    <a href="#" class="btn btn-outline" onclick="alert('Open in Colab')">
+                                        <i class="fab fa-google"></i> Open in Colab
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>What You'll Build</h3>
+                        <p>In this chapter, you'll implement:</p>
+                        <ul>
+                            <li><strong>Text Tokenizer</strong>: Convert text to and from token representations</li>
+                            <li><strong>Sampling Functions</strong>: Implement various decoding strategies</li>
+                            <li><strong>Generation Loop</strong>: Create the core text generation algorithm</li>
+                            <li><strong>Interactive Interface</strong>: Build a simple text generation interface</li>
+                        </ul>
+
+                        <h3>Code Example</h3>
+                        <p>Here's a preview of the text generation function you'll implement:</p>
+                        <pre><code class="language-python">import torch
+
+def generate_text(model, tokenizer, prompt, max_tokens=100, temperature=1.0):
+    """
+    Generate text using a pre-trained language model.
+
+    Args:
+        model: The pre-trained LLM
+        tokenizer: Tokenizer for encoding/decoding text
+        prompt: Input text to continue from
+        max_tokens: Maximum number of tokens to generate
+        temperature: Sampling temperature (higher = more random)
+
+    Returns:
+        Generated text as a string
+    """
+    # Encode the prompt
+    input_ids = tokenizer.encode(prompt, return_tensors='pt')
+
+    # Generate tokens one by one
+    for _ in range(max_tokens):
+        # Get model predictions
+        with torch.no_grad():
+            outputs = model(input_ids)
+            logits = outputs.logits[:, -1, :]
+
+        # Apply temperature and sample
+        logits = logits / temperature
+        probs = torch.softmax(logits, dim=-1)
+        next_token = torch.multinomial(probs, num_samples=1)
+
+        # Append to sequence
+        input_ids = torch.cat([input_ids, next_token], dim=-1)
+
+        # Check for end of sequence
+        if next_token.item() == tokenizer.eos_token_id:
+            break
+
+    # Decode and return
+    return tokenizer.decode(input_ids[0])
+</code></pre>
+
+                        <h2 id="exercises">Exercises</h2>
+                        <p>
+                            Test your understanding with these hands-on exercises. Solutions are provided in the exercise solutions notebook.
+                        </p>
+
+                        <div class="exercise-list">
+                            <div class="exercise-item">
+                                <div class="exercise-number">1</div>
+                                <div class="exercise-content">
+                                    <h4>Implement Top-k Sampling</h4>
+                                    <p>Modify the generation function to use top-k sampling instead of standard temperature sampling.</p>
+                                    <span class="difficulty easy">Easy</span>
+                                </div>
+                            </div>
+
+                            <div class="exercise-item">
+                                <div class="exercise-number">2</div>
+                                <div class="exercise-content">
+                                    <h4>Add Top-p (Nucleus) Sampling</h4>
+                                    <p>Implement nucleus sampling to dynamically adjust the sampling pool based on cumulative probability.</p>
+                                    <span class="difficulty medium">Medium</span>
+                                </div>
+                            </div>
+
+                            <div class="exercise-item">
+                                <div class="exercise-number">3</div>
+                                <div class="exercise-content">
+                                    <h4>Compare Sampling Strategies</h4>
+                                    <p>Generate text using different sampling strategies and analyze the differences in output quality and diversity.</p>
+                                    <span class="difficulty medium">Medium</span>
+                                </div>
+                            </div>
+
+                            <div class="exercise-item">
+                                <div class="exercise-number">4</div>
+                                <div class="exercise-content">
+                                    <h4>Optimize Generation Speed</h4>
+                                    <p>Implement key-value caching to speed up the generation process by avoiding redundant computations.</p>
+                                    <span class="difficulty hard">Hard</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="solutions-box">
+                            <i class="fas fa-key"></i>
+                            <div>
+                                <strong>Exercise Solutions</strong>
+                                <p>Complete solutions with explanations are available in the exercise solutions notebook.</p>
+                                <a href="https://github.com/rasbt/reasoning-from-scratch/blob/main/ch02/01_main-chapter-code/ch02_exercise-solutions.ipynb" target="_blank" class="btn btn-secondary">
+                                    View Solutions <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <h2 id="bonus">Bonus Materials</h2>
+                        <p>
+                            Explore additional topics and advanced implementations to deepen your understanding.
+                        </p>
+
+                        <div class="bonus-grid">
+                            <div class="bonus-card">
+                                <i class="fas fa-wrench"></i>
+                                <h3>Python Setup Tips</h3>
+                                <p>Detailed guide for setting up Python, managing packages, and configuring your development environment</p>
+                                <a href="https://github.com/rasbt/reasoning-from-scratch/tree/main/ch02/02_setup-tips" target="_blank">Learn More →</a>
+                            </div>
+
+                            <div class="bonus-card">
+                                <i class="fas fa-bolt"></i>
+                                <h3>GPU-Optimized LLM</h3>
+                                <p>Use optimized versions of the model for faster inference on GPUs</p>
+                                <a href="https://github.com/rasbt/reasoning-from-scratch/tree/main/ch02/03_optimized-LLM" target="_blank">Learn More →</a>
+                            </div>
+
+                            <div class="bonus-card">
+                                <i class="fas fa-desktop"></i>
+                                <h3>torch.compile on Windows</h3>
+                                <p>Special instructions for using torch.compile() on Windows systems</p>
+                                <a href="https://github.com/rasbt/reasoning-from-scratch/tree/main/ch02/04_torch-compile-windows" target="_blank">Learn More →</a>
+                            </div>
+
+                            <div class="bonus-card">
+                                <i class="fas fa-comment"></i>
+                                <h3>Chat Interface</h3>
+                                <p>Build an interactive chat interface for your model</p>
+                                <a href="https://github.com/rasbt/reasoning-from-scratch/tree/main/ch02/05_use_model" target="_blank">Learn More →</a>
+                            </div>
+                        </div>
+
+                        <h2 id="resources">Additional Resources</h2>
+                        <div class="resources-list">
+                            <div class="resource-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <h4>Chapter Code Repository</h4>
+                                    <p>Access all code files, notebooks, and scripts for this chapter</p>
+                                    <a href="https://github.com/rasbt/reasoning-from-scratch/tree/main/ch02" target="_blank">View on GitHub →</a>
+                                </div>
+                            </div>
+
+                            <div class="resource-item">
+                                <i class="fas fa-comments"></i>
+                                <div>
+                                    <h4>Discussion Forum</h4>
+                                    <p>Ask questions and discuss chapter content with other learners</p>
+                                    <a href="https://livebook.manning.com/forum?product=raschka2&page=1" target="_blank">Join Discussion →</a>
+                                </div>
+                            </div>
+
+                            <div class="resource-item">
+                                <i class="fas fa-bug"></i>
+                                <div>
+                                    <h4>Troubleshooting Guide</h4>
+                                    <p>Find solutions to common issues and problems</p>
+                                    <a href="../resources/troubleshooting.html">View Guide →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter Pagination -->
+    <section class="chapter-pagination">
+        <div class="container">
+            <a href="chapter01.html" class="chapter-prev disabled">
+                <i class="fas fa-arrow-left"></i>
+                <div>
+                    <span>Previous</span>
+                    <strong>Chapter 1: Understanding Reasoning Models</strong>
+                </div>
+            </a>
+            <a href="../index.html#chapters" class="chapter-toc">
+                <i class="fas fa-th"></i>
+                All Chapters
+            </a>
+            <a href="chapter03.html" class="chapter-next">
+                <div>
+                    <span>Next</span>
+                    <strong>Chapter 3: Evaluating Reasoning Models</strong>
+                </div>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>Companion learning website for <em>Build A Reasoning Model (From Scratch)</em> by Sebastian Raschka.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="https://mng.bz/lZ5B" target="_blank">Manning Book Page</a></li>
+                        <li><a href="https://github.com/rasbt/reasoning-from-scratch" target="_blank">GitHub Repository</a></li>
+                        <li><a href="../index.html">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Sebastian Raschka. Licensed under Apache License 2.0.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+</html>
