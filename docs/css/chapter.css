@@ -1,0 +1,593 @@
+/* Chapter Page Styles */
+
+/* Chapter Header */
+.chapter-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem 0 3rem;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.breadcrumb a {
+    color: white;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb i {
+    font-size: 0.7rem;
+}
+
+.chapter-title {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.chapter-number-large {
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1;
+    opacity: 0.3;
+    min-width: 120px;
+}
+
+.chapter-title h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.chapter-description {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin-bottom: 1rem;
+}
+
+.chapter-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.chapter-badges .badge {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Chapter Navigation */
+.chapter-nav {
+    background-color: white;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 60px;
+    z-index: 100;
+    box-shadow: var(--shadow);
+}
+
+.chapter-nav-grid {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+}
+
+.chapter-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.chapter-nav-item:hover {
+    background-color: var(--bg-secondary);
+    color: var(--primary-color);
+}
+
+.chapter-nav-item.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.chapter-nav-item i {
+    font-size: 1.1rem;
+}
+
+/* Content Layout */
+.chapter-content {
+    padding: 3rem 0;
+    background-color: var(--bg-secondary);
+}
+
+.content-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 3rem;
+}
+
+/* Sidebar */
+.sidebar {
+    position: sticky;
+    top: 140px;
+    height: fit-content;
+}
+
+.sidebar-section {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-section h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.toc {
+    list-style: none;
+}
+
+.toc li {
+    margin-bottom: 0.5rem;
+}
+
+.toc a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.toc a:hover {
+    color: var(--primary-color);
+}
+
+.prereq-list,
+.quick-links {
+    list-style: none;
+}
+
+.prereq-list li,
+.quick-links li {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.prereq-list i {
+    color: var(--success-color);
+}
+
+.quick-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.quick-links a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+.main-content {
+    background-color: white;
+    padding: 2rem 3rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+}
+
+.main-content h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.main-content h2:first-child {
+    margin-top: 0;
+}
+
+.main-content h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.main-content ul,
+.main-content ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.main-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Info Boxes */
+.info-box,
+.solutions-box {
+    background-color: var(--bg-secondary);
+    border-left: 4px solid var(--primary-color);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin: 2rem 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.info-box i,
+.solutions-box i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-top: 0.25rem;
+}
+
+.info-box strong,
+.solutions-box strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.info-box ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+.solutions-box {
+    background-color: #fef3c7;
+    border-left-color: var(--warning-color);
+}
+
+.solutions-box i {
+    color: var(--warning-color);
+}
+
+/* Notebook Grid */
+.notebook-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.notebook-card {
+    background-color: var(--bg-secondary);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.notebook-icon {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.notebook-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.notebook-card p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.notebook-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Exercise List */
+.exercise-list {
+    margin: 2rem 0;
+}
+
+.exercise-item {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.exercise-item:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.exercise-number {
+    min-width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.exercise-content {
+    flex: 1;
+}
+
+.exercise-content h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.exercise-content p {
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+}
+
+.difficulty {
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.difficulty.easy {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.difficulty.medium {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.difficulty.hard {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* Bonus Grid */
+.bonus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.bonus-card {
+    background-color: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.bonus-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.bonus-card i {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 0.75rem;
+}
+
+.bonus-card h3 {
+    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.bonus-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+.bonus-card a {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Resources List */
+.resources-list {
+    margin: 2rem 0;
+}
+
+.resource-item {
+    background-color: var(--bg-secondary);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.resource-item i {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-top: 0.25rem;
+}
+
+.resource-item h4 {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+}
+
+.resource-item p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.resource-item a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Chapter Pagination */
+.chapter-pagination {
+    background-color: white;
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+}
+
+.chapter-pagination .container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.chapter-prev,
+.chapter-next,
+.chapter-toc {
+    padding: 1rem 1.5rem;
+    background-color: var(--bg-secondary);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.chapter-prev:hover,
+.chapter-next:hover,
+.chapter-toc:hover {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.chapter-prev.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.chapter-toc {
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.chapter-prev span,
+.chapter-next span {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    display: block;
+}
+
+.chapter-prev:hover span,
+.chapter-next:hover span {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.chapter-prev strong,
+.chapter-next strong {
+    font-size: 0.9rem;
+    display: block;
+}
+
+.chapter-next {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .content-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .chapter-title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .chapter-number-large {
+        font-size: 3rem;
+        min-width: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 1.5rem;
+    }
+
+    .chapter-title h1 {
+        font-size: 1.75rem;
+    }
+
+    .chapter-nav-grid {
+        gap: 0.5rem;
+    }
+
+    .chapter-nav-item {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .chapter-pagination .container {
+        grid-template-columns: 1fr;
+    }
+
+    .chapter-prev,
+    .chapter-next {
+        width: 100%;
+    }
+
+    .exercise-item {
+        flex-direction: column;
+    }
+
+    .bonus-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .notebook-links {
+        flex-direction: column;
+    }
+}

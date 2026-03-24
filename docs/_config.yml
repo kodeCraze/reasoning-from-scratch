@@ -1,0 +1,41 @@
+baseurl: ""
+url: "https://kodecraze.github.io"
+repository: "kodeCraze/reasoning-from-scratch"
+
+# Build settings
+markdown: kramdown
+theme: null
+plugins:
+  - jekyll-relative-links
+  - jekyll-seo-tag
+
+# Exclude files from build
+exclude:
+  - README.md
+  - .gitignore
+
+# Enable relative links
+relative_links:
+  enabled: true
+  collections: false
+
+# SEO settings
+title: "Build A Reasoning Model (From Scratch)"
+description: "Learn to build reasoning LLMs step by step with hands-on code"
+author: "Sebastian Raschka"
+twitter:
+  username: rasbt
+  card: summary_large_image
+
+# Social links
+social:
+  name: Sebastian Raschka
+  links:
+    - https://github.com/rasbt/reasoning-from-scratch
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: null
